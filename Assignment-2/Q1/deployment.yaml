@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deployment
+  labels:
+    app: flask-webapp-sarang
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: flask-webapp-sarang
+  template:
+    metadata:
+      labels:
+        app: flask-webapp-sarang
+    spec:
+      containers:
+      - name: flask-webapp
+        image: sarangp007/flask_webapp_sarang:latest
+        ports:
+        - containerPort: 80
